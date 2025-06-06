@@ -1,21 +1,147 @@
-# TASK-REPOSITORY untuk Tugas Bootcamp Eco Techno Leader 
+Berikut adalah penjelasan dari fungsi validasi_input() , beserta tambahan untuk mengecek kabisat dan menghitung jumlah hari dalam bulan tersebut, semuanya menggunakan loop:
 
-Repository ini dibuat sebagai bagian dari tugas dalam **Bootcamp Eco Techno Leader**. Berisikan berbagai aplikasi atau tugas yang akan dikembangkan selama bootcamp berlangsung. 
-## 📚 Isi Repositori
-1. **[Zeller Calculator](https://github.com/retno-kusbianto/zeller_calculator)**
-      Zeller Calculator adalah aplikasi terminal Python sederhana yang menghitung hari dalam seminggu. Perhitungan dilakukan menggunakan algoritma klasik Zeller's Congruence.
+💡 Tujuan Program:
+Memvalidasi input tanggal, bulan, dan tahun dari pengguna.
 
+Mengecek apakah tahun tersebut kabisat atau bukan.
 
----
+Menghitung jumlah hari dalam bulan (dengan mempertimbangkan kabisat untuk Februari).
 
-Repositori ini akan terus diperbarui seiring dengan berjalannya Program Eco Techno Leader.  
-📌 Jangan ragu untuk menjelajahi setiap subdirektori atau tautan yang tersedia — siapa tahu kamu menemukan sesuatu yang bermanfaat atau menginspirasi!  
-Stay tuned untuk pembaruan selanjutnya! 🚀
+✅ Penjelasan Fungsi validasi_input():
 
+def validasi_input():
+    while True:  # Perulangan agar input terus diminta sampai benar
+        try:
+            tanggal = int(input("Masukkan tanggal (1-31): "))
+            if tanggal < 1 or tanggal > 31:
+                print("Tanggal harus antara 1 dan 31!")
+                continue  # Kembali ke awal loop
 
-## 📬 Kontak
-Untuk pertanyaan atau saran, silakan hubungi melalui:
+            bulan = int(input("Masukkan bulan (1-12): "))
+            if bulan < 1 or bulan > 12:
+                print("Bulan harus antara 1 dan 12!")
+                continue
 
-📧 paendrich@gmail.com  
+            tahun = int(input("Masukkan tahun: "))
+            if tahun < 1:
+                print("Tahun harus positif!")
+                continue
 
-🌐 [Website](https://retno-kusbianto.github.io/)
+            return tanggal, bulan, tahun  # Keluar dari loop bila semua valid
+        except ValueError:
+            print("Harus masukkan angka!")  # Tangani input yang bukan angka
+
+🔄 Tambahan: Cek Kabisat dan Hitung Hari
+Berikut adalah keseluruhan program yang ditambahkan fungsi cek_kabisat() dan jumlah_hari_dalam_bulan():
+
+def validasi_input():
+    while True:
+        try:
+            tanggal = int(input("Masukkan tanggal (1-31): "))
+            if tanggal < 1 or tanggal > 31:
+                print("Tanggal harus antara 1 dan 31!")
+                continue
+
+            bulan = int(input("Masukkan bulan (1-12): "))
+            if bulan < 1 or bulan > 12:
+                print("Bulan harus antara 1 dan 12!")
+                continue
+
+            tahun = int(input("Masukkan tahun: "))
+            if tahun < 1:
+                print("Tahun harus positif!")
+                continue
+
+            return tanggal, bulan, tahun
+        except ValueError:
+            print("Harus masukkan angka!")
+
+def cek_kabisat(tahun):
+    return tahun % 4 == 0 and (tahun % 100 != 0 or tahun % 400 == 0)
+
+def jumlah_hari_dalam_bulan(bulan, tahun):
+    if bulan == 2:
+        return 29 if cek_kabisat(tahun) else 28
+    elif bulan in [4, 6, 9, 11]:
+        return 30
+    else:
+        return 31
+
+# Program utama
+while True:
+    tanggal, bulan, tahun = validasi_input()
+    hari_dalam_bulan = jumlah_hari_dalam_bulan(bulan, tahun)
+
+    print(f"\nTanggal yang Anda masukkan: {tanggal}-{bulan}-{tahun}")
+    print(f"Tahun {tahun} adalah tahun kabisat: {'Ya' if cek_kabisat(tahun) else 'Bukan'}")
+    print(f"Jumlah hari dalam bulan {bulan} tahun {tahun} adalah: {hari_dalam_bulan} hari")
+
+    ulang = input("\nIngin cek lagi? (y/n): ").lower()
+    if ulang != 'y':
+        break
+
+📌 Contoh Output:
+
+Masukkan tanggal (1-31): 29
+Masukkan bulan (1-12): 2
+Masukkan tahun: 2024
+
+Tanggal yang Anda masukkan: 29-2-2024
+Tahun 2024 adalah tahun kabisat: Ya
+Jumlah hari dalam bulan 2 tahun 2024 adalah: 29 hari
+
+Ingin cek lagi? (y/n):
+
+✅ Versi Lengkap: Cek Kabisat + Jumlah Hari + Validasi Tanggal Sesuai Bulan
+
+def cek_kabisat(tahun):
+    return tahun % 4 == 0 and (tahun % 100 != 0 or tahun % 400 == 0)
+
+def jumlah_hari_dalam_bulan(bulan, tahun):
+    if bulan == 2:
+        return 29 if cek_kabisat(tahun) else 28
+    elif bulan in [4, 6, 9, 11]:
+        return 30
+    else:
+        return 31
+
+def validasi_input():
+    while True:
+        try:
+            bulan = int(input("Masukkan bulan (1-12): "))
+            if bulan < 1 or bulan > 12:
+                print("Bulan harus antara 1 dan 12!")
+                continue
+
+            tahun = int(input("Masukkan tahun: "))
+            if tahun < 1:
+                print("Tahun harus positif!")
+                continue
+
+            hari_maks = jumlah_hari_dalam_bulan(bulan, tahun)
+
+            tanggal = int(input(f"Masukkan tanggal (1-{hari_maks}): "))
+            if tanggal < 1 or tanggal > hari_maks:
+                print(f"Tanggal tidak valid! Bulan {bulan} pada tahun {tahun} hanya memiliki {hari_maks} hari.")
+                continue
+
+            return tanggal, bulan, tahun
+        except ValueError:
+            print("Harus masukkan angka!")
+
+# Program utama
+while True:
+    tanggal, bulan, tahun = validasi_input()
+    hari_dalam_bulan = jumlah_hari_dalam_bulan(bulan, tahun)
+
+    print(f"\nTanggal yang Anda masukkan: {tanggal}-{bulan}-{tahun}")
+    print(f"Tahun {tahun} adalah tahun kabisat: {'Ya' if cek_kabisat(tahun) else 'Bukan'}")
+    print(f"Jumlah hari dalam bulan {bulan} tahun {tahun} adalah: {hari_dalam_bulan} hari")
+
+    ulang = input("\nIngin cek lagi? (y/n): ").lower()
+    if ulang != 'y':
+        break
+
+##  🤝 Kontribusi
+Semoga Bermanfaat
+
