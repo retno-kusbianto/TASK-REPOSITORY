@@ -1,9 +1,9 @@
 # TASK-REPOSITORY - Eco Techno Leader Bootcamp Assignment
 
-Repositori ini berisikan tugas Eco Techno Leader. 
+This repository was created as part of the Eco Techno Leader Bootcamp assignments. It contains various applications or tasks that will be developed throughout the bootcamp. 
 ## 📚 Repository Contents
 1. **[Zeller Calculator]()**
-      algoritma yang digunakan untuk menghitung hari dalam seminggu pada suatu tanggal tertentu.
+      Zeller Calculator is a simple terminal-based Python application that calculates the day of the week. The calculation uses the classic Zeller's Congruence algorithm
 
 
 ---
