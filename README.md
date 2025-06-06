@@ -2,7 +2,7 @@
 
 This repository was created as part of the Eco Techno Leader Bootcamp assignments. It contains various applications or tasks that will be developed throughout the bootcamp. 
 ## 📚 Repository Contents
-1. **[Zeller Calculator](https://github.com/retno-kusbianto/zeller_calculator)**
+1. **[Zeller Calculator]()**
       Zeller Calculator is a simple terminal-based Python application that calculates the day of the week. The calculation uses the classic Zeller's Congruence algorithm.
 
 
