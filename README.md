@@ -3,7 +3,7 @@
 Repositori ini berisikan berbagai tugas Eco Techno Leader. 
 ## 📚 Repository Contents
 1. **[Zeller Calculator]()**
-      Fungsi utama Kalkulator Zeller adalah untuk menghitung hari dalam seminggu untuk tanggal tertentu dalam kalender Gregorian. . 
+      Fungsi utama Kalkulator Zeller adalah untuk menghitung hari dalam seminggu untuk tanggal tertentu dalam kalender Gregorian.
 
 
 ---
